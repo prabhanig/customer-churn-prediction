@@ -7,7 +7,7 @@ import joblib
 
 def train_model(input_file, model_file):
     # Load cleaned data
-    data = pd.read_csv(input_file)
+    data = pd.read_csv('data/cleaned_data.csv')
     
     # Separate features and target variable
     X = data.drop('Churn_Yes', axis=1)
