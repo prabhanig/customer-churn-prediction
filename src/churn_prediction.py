@@ -5,7 +5,7 @@ import joblib
 def predict_churn(input_file, model_file, output_file):
     # Load the data and model
     data = pd.read_csv(input_file)
-    model = joblib.load(model_file)
+    model = joblib.load('model/random_forest_model.pkl')
     
     # Make predictions
     predictions = model.predict(data)
