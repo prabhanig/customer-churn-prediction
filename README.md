@@ -38,7 +38,7 @@ This project focuses on predicting customer churn using machine learning and vis
 
 #### **Screenshot:**
 
-![Model Training](model.png)
+![Model Training](images/model.png)
 
 ### Step 3: Churn Prediction
 
@@ -47,7 +47,7 @@ This project focuses on predicting customer churn using machine learning and vis
 
 #### **Screenshot:**
 
-![Predictions](predictions.png)
+![Predictions](images/predictions.png)
 
 ### Step 4: Documentation
 
