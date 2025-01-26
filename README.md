@@ -115,6 +115,5 @@ Contributions are welcome! Feel free to fork the repository and submit a pull re
 
 ## Contact
 For questions or feedback, reach out via:
-- Email: prabs.barney@gmail.com
 - LinkedIn: [Prabhani Gunasekera](https://www.linkedin.com/in/prabhanigunasekera)
 - GitHub: [Prabhani Gunasekera](https://github.com/prabhanig)
