@@ -8,9 +8,11 @@ def clean_data(input_file, output_file):
     # Drop unnecessary columns
     data.drop(['customerID'], axis=1, inplace=True)
     
-    # Handle missing values
+    # Convert TotalCharges to numeric and handle errors
     data['TotalCharges'] = pd.to_numeric(data['TotalCharges'], errors='coerce')
-    data.fillna(data.mean(), inplace=True)
+    
+    # Fill missing values in TotalCharges
+    data['TotalCharges'].fillna(data['TotalCharges'].mean(), inplace=True)
     
     # Encode categorical variables
     data = pd.get_dummies(data, drop_first=True)
@@ -20,4 +22,4 @@ def clean_data(input_file, output_file):
     print(f"Cleaned data saved to {output_file}")
 
 if __name__ == "__main__":
-    clean_data('../data/customer_data.csv', '../data/cleaned_data.csv')
+    clean_data('data/customer_data.csv', 'data/cleaned_data.csv')
