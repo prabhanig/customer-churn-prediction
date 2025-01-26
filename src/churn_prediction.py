@@ -6,6 +6,10 @@ def predict_churn(input_file, model_file, output_file):
     # Load the data and model
     data = pd.read_csv(input_file)
     model = joblib.load(model_file)
+
+    # Drop the target column (if it exists)
+    if 'Churn_Yes' in data.columns:
+        data = data.drop(columns=['Churn_Yes'])
     
     # Make predictions
     predictions = model.predict(data)
@@ -22,4 +26,5 @@ if __name__ == "__main__":
     output_file = 'data/predictions.csv'  # Path to save predictions
 
     predict_churn(input_file, model_file, output_file)
+
 
