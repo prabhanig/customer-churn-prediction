@@ -8,14 +8,19 @@ def clean_data(input_file, output_file):
     # Drop unnecessary columns
     data.drop(['customerID'], axis=1, inplace=True)
     
-    # Convert TotalCharges to numeric and handle errors
+    # Handle TotalCharges (convert to numeric and fill missing)
     data['TotalCharges'] = pd.to_numeric(data['TotalCharges'], errors='coerce')
-    
-    # Fill missing values in TotalCharges
     data['TotalCharges'].fillna(data['TotalCharges'].mean(), inplace=True)
     
     # Encode categorical variables
-    data = pd.get_dummies(data, drop_first=True)
+    categorical_columns = [
+        'gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
+        'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
+        'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract',
+        'PaperlessBilling', 'PaymentMethod', 'Churn'
+    ]
+    
+    data = pd.get_dummies(data, columns=categorical_columns, drop_first=True)
     
     # Save cleaned data
     data.to_csv(output_file, index=False)
