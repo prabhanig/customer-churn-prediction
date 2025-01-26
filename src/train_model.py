@@ -1,4 +1,5 @@
 
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -6,6 +7,9 @@ from sklearn.metrics import classification_report
 import joblib
 
 def train_model(input_file, model_file):
+    # Create the model directory if it doesn't exist
+    os.makedirs(os.path.dirname(model_file), exist_ok=True)
+     
     # Load cleaned data
     data = pd.read_csv('data/cleaned_data.csv')
     
