@@ -25,7 +25,7 @@ def train_model(input_file, model_file):
     print(classification_report(y_test, y_pred))
     
     # Save the model
-    joblib.dump(model, model_file)
+    joblib.dump(model, 'model/random_forest_model.pkl')
     print(f"Model saved to {model_file}")
 
 if __name__ == "__main__":
