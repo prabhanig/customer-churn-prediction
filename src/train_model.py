@@ -1,4 +1,3 @@
-
 import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -7,11 +6,12 @@ from sklearn.metrics import classification_report
 import joblib
 
 def train_model(input_file, model_file):
-    # Create the model directory if it doesn't exist
-    os.makedirs(os.path.dirname(model_file), exist_ok=True)
-     
+    # Ensure the model directory exists
+    model_dir = os.path.dirname(model_file)
+    os.makedirs(model_dir, exist_ok=True)
+
     # Load cleaned data
-    data = pd.read_csv('data/cleaned_data.csv')
+    data = pd.read_csv(input_file)
     
     # Separate features and target variable
     X = data.drop('Churn_Yes', axis=1)
@@ -29,8 +29,13 @@ def train_model(input_file, model_file):
     print(classification_report(y_test, y_pred))
     
     # Save the model
-    joblib.dump(model, 'model/random_forest_model.pkl')
+    joblib.dump(model, model_file)
     print(f"Model saved to {model_file}")
 
 if __name__ == "__main__":
-    train_model('../data/cleaned_data.csv', '../model/random_forest_model.pkl')
+    # Paths
+    input_file = 'data/cleaned_data.csv'  # Path to cleaned data
+    model_file = 'model/random_forest_model.pkl'  # Path to save trained model
+
+    train_model(input_file, model_file)
+
